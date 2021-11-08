@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.5.3'
+}
+
+repositories {
+    mavenCentral()
+    maven {url 'https://repo.osgeo.org/repository/release/'}
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc:2.5.3'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.5.3'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator:2.5.3'
+    implementation 'io.projectreactor:reactor-core:3.4.9'
+
+    implementation('org.geotools:gt-shapefile:25.2') {
+        exclude group: 'javax.media', module: 'jai_core'
+    }
+
+    implementation 'org.postgresql:postgresql:42.2.23'
+    implementation 'org.locationtech.jts:jts-core:1.18.1'
+    implementation 'io.micrometer:micrometer-registry-graphite:1.7.3'
+
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
+    testCompileOnly 'org.projectlombok:lombok:1.18.20'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
+}

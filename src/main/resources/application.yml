@@ -1,0 +1,24 @@
+server:
+  port: 8517
+
+spring:
+  datasource:
+    url: jdbc:postgresql:gis_test
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.spatial.dialect.postgis.PostgisDialect
+
+management:
+  metrics:
+    enable:
+      all: true
+    export:
+      graphite:
+        enabled: true
+        host: localhost
+        step: 10s
+        graphite-tags-enabled: false
